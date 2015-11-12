@@ -1,0 +1,40 @@
+# You are given two linked lists representing two non-negative numbers.
+# The digits are stored in reverse order and each of their nodes 
+# contain a single digit. Add the two numbers and return it as a linked list.
+
+# Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+# Output: 7 -> 0 -> 8
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        r = 0
+        h = ListNode(0)
+        x = h
+        while l1 != None or l2 != None:
+            a = r
+            if l1 != None:
+                a = a + l1.val
+                l1 = l1.next
+            if l2 != None:
+                a = a + l2.val
+                l2 = l2.next
+            r = a / 10
+            a = a % 10
+            new = ListNode(a)
+            x.next = new
+            x = x.next
+        if r > 0:
+            new = ListNode(r)
+            x.next = new
+        return h.next
