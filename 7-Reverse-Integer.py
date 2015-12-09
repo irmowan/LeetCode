@@ -1,6 +1,6 @@
 # Time: O(logn)
 # Space: O(1)
-# 
+#
 # Reverse digits of an integer.
 #
 # Example1: x = 123, return 321
@@ -39,3 +39,6 @@ class Solution(object):
             return 0
         else:
             return ans
+
+if __name__ == "__main__":
+    print(Solution().reverse(-12340))

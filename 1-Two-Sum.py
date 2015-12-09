@@ -39,3 +39,6 @@ class Solution(object):
                 return find(nums, a[p], a[q])
             p = p + 1
         return
+
+if __name__ == "__main__":
+    print("index1=%d, index2=%d" % Solution().twoSum((2, 7, 11, 15), 9))

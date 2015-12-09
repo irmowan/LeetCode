@@ -9,10 +9,10 @@
 # Output: 7 -> 0 -> 8
 
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
@@ -41,3 +41,9 @@ class Solution(object):
             new = ListNode(r)
             x.next = new
         return h.next
+
+if __name__ == "__main__":
+    a, a.next, a.next.next = ListNode(2), ListNode(4), ListNode(3)
+    b, b.next, b.next.next = ListNode(5), ListNode(6), ListNode(4)
+    result = Solution().addTwoNumbers(a, b)
+    print("{0} -> {1} -> {2}".format(result.val, result.next.val, result.next.next.val))

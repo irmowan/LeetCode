@@ -34,3 +34,6 @@ class Solution(object):
                 if i > 0 and i < numRows - 1 and j + step - 2 * i < len(s):
                     zigzag += s[j + step - 2 * i]
         return zigzag
+
+if __name__ == "__main__":
+    print(Solution().convert("1234567890123456", 4))
