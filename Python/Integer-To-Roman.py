@@ -1,5 +1,5 @@
-# Time:
-# Space:
+# Time: O(n)
+# Space: O(1)
 #
 # Given an integer, convert it to a roman numeral.
 #
