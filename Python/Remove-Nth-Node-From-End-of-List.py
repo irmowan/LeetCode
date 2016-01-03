@@ -25,24 +25,18 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        sum1 = 0
-        x = head
-        while x:
-            x = x.next
-            sum1 += 1
-        x = head
-        if sum1 == n:
-            return x.next
-        sum2 = 0
-        while x:
-            sum2 += 1
-            if sum2 == sum1 - n:
-                x.next = x.next.next
-                return head
-            x = x.next
+        dummy = ListNode(-1)
+        dummy.next = head
+        slow, fast = dummy, dummy
+        for i in range(n):
+            fast = fast.next
+        while fast.next:
+            slow, fast = slow.next, fast.next
+        slow.next = slow.next.next
+        return dummy.next
 
 if __name__ == '__main__':
     a, a.next, a.next.next, a.next.next.next, a.next.next.next.next = \
-    ListNode(1),ListNode(2), ListNode(3), ListNode(4), ListNode(5)
+    ListNode(1), ListNode(2), ListNode(3), ListNode(4), ListNode(5)
     ans = Solution().removeNthFromEnd(a, 2)
     print(ans)
