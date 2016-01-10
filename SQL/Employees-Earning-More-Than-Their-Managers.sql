@@ -18,6 +18,6 @@
 
 # Write your MySQL query statement below
 
-select a.Name
-from Employee a, Employee b
-where a.ManagerId = b.Id and a.Salary > b.Salary
+Select a.Name
+From Employee as a, Employee as b
+Where a.ManagerId = b.Id and a.Salary > b.Salary
