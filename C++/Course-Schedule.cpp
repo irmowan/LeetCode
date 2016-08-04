@@ -1,23 +1,31 @@
 class Solution {
- public:
+public:
   bool canFinish(int numCourses, vector<pair<int, int>> &prerequisites) {
-    vector<int> courses[numCourses];
-    for (auto &e : prerequisites) courses[e.second].push_back(e.first);
-    vector<bool> visiting(numCourses, false);
-    vector<bool> visited(numCourses, false);
-    for (int i = 0; i < prerequisites.size(); ++i) {
-      if (!visited[i] && !dfs(courses, visiting, visited, i)) return false;
+    vector<int> degree(numCourses, 0);
+    queue<int> zeroPoint;
+    vector<int> result;
+    for (pair<int, int> prerequisite : prerequisites) {
+      degree[prerequisite.first]++;
     }
-    return true;
-  }
-  bool dfs(vector<int> courses[], vector<bool> &visiting, vector<bool> &visited,
-           int i) {
-    visiting[i] = true;
-    for (auto &x : courses[i]) {
-      if (visiting[x] || !dfs(courses, visiting, visited, x)) return false;
+    for (int i = 0; i < numCourses; ++i) {
+      if (degree[i] == 0)
+        zeroPoint.push(i);
     }
-    visiting[i] = false;
-    visited[i] = true;
+    while (!zeroPoint.empty()) {
+      int key = zeroPoint.front();
+      zeroPoint.pop();
+      result.push_back(key);
+      for (pair<int, int> prerequisite : prerequisites) {
+        if (prerequisite.second == key) {
+          if (--degree[prerequisite.first] == 0) {
+            zeroPoint.push(prerequisite.first);
+          };
+        }
+      }
+    }
+    if (result.size() < numCourses) {
+      return false;
+    }
     return true;
   }
 };
